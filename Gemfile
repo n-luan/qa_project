@@ -19,6 +19,9 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bcrypt", "~> 3.1.7"
 gem "mini_racer", platforms: :ruby
 #gem "capistrano-rails", group: :development
+gem "will_paginate", "~> 3.1.0"
+gem "bootstrap-will_paginate", "1.0.0"
+gem "faker"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
