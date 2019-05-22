@@ -14,11 +14,14 @@ gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
-gem "mini_magick", "~> 4.8"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bcrypt", "~> 3.1.7"
+gem "font_awesome5_rails"
+gem "capistrano-rails", group: :development
+gem "faker"
+gem "kaminari"
+gem "bootstrap4-kaminari-views"
 gem 'font_awesome5_rails'
-#gem "capistrano-rails", group: :development
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
