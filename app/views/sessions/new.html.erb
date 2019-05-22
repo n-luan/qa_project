@@ -1,3 +1,4 @@
+<% provide :title, "Login" %>
 <div class="qa-body-wrapper">
   <div class="qa-main-wrapper">
     <div class="qa-main">
@@ -7,26 +8,26 @@
         </h1>
       </div>
       <div class="qa-part-form">
-        <form method="post" action="./login?to=">
+        <%= form_for(:session, url: login_path) do |f| %>
           <table class="qa-form-tall-table">
             <tr>
               <td class="qa-form-tall-label">
-                Email:
+                <%= f.label :email %>
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-data">
-                <input name="emailhandle" id="emailhandle" dir="auto" type="text" value="" class="qa-form-tall-text">
+                <%= f.email_field :email, class: 'qa-form-tall-text' %>
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-label">
-                Password:
+                <%= f.label :password %>
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-data">
-                <input name="password" id="password" dir="auto" type="password" value="" class="qa-form-tall-text">
+                <%= f.password_field :password, class: 'qa-form-tall-text' %>
                 <div class="qa-form-tall-note">
                   <%= link_to "I forgot my password", "#" %>
                 </div>
@@ -42,12 +43,12 @@
             </tr>
             <tr>
               <td colspan="1" class="qa-form-tall-buttons">
-                <input value="Log In" title="" type="submit" class="qa-form-tall-button qa-form-tall-button-login">
+                <%= f.submit "Log in", class: "qa-form-tall-button qa-form-tall-button-login" %>
               </td>
             </tr>
           </table>
           <input name="dologin" type="hidden" value="1">
-        </form>
+        <% end %>
       </div>
     </div>
     <div class="qa-sidepanel" id="qam-sidepanel-mobile">
@@ -92,4 +93,5 @@
         </div>
       </div>
     </div>
-    
+  </div>
+</div>
