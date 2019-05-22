@@ -1,16 +1,95 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
-<div>
-  <div>
-    <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-    <p>New user? <%= link_to "Sign up now!", '#' %></p>
-  </div>
-</div>
+<div class="qa-body-wrapper">
+  <div class="qa-main-wrapper">
+    <div class="qa-main">
+      <div class="qa-main-heading">
+        <h1>
+          Log in
+        </h1>
+      </div>
+      <div class="qa-part-form">
+        <form method="post" action="./login?to=">
+          <table class="qa-form-tall-table">
+            <tr>
+              <td class="qa-form-tall-label">
+                Email:
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <input name="emailhandle" id="emailhandle" dir="auto" type="text" value="" class="qa-form-tall-text">
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                Password:
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <input name="password" id="password" dir="auto" type="password" value="" class="qa-form-tall-text">
+                <div class="qa-form-tall-note">
+                  <%= link_to "I forgot my password", "#" %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                <label>
+                  <input name="remember" type="checkbox" value="1" class="qa-form-tall-checkbox">
+                  Remember me on this computer
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1" class="qa-form-tall-buttons">
+                <input value="Log In" title="" type="submit" class="qa-form-tall-button qa-form-tall-button-login">
+              </td>
+            </tr>
+          </table>
+          <input name="dologin" type="hidden" value="1">
+        </form>
+      </div>
+    </div>
+    <div class="qa-sidepanel" id="qam-sidepanel-mobile">
+      <div class="qam-search turquoise ">
+        <div class="qa-search">
+          <form method="get" action="./search">
+            <input type="text" placeholder="Search..." name="q" value="" class="qa-search-field">
+            <input type="submit" value="Search" class="qa-search-button">
+          </form>
+        </div>
+      </div>
+      <div class="qa-sidebar wet-asphalt">
+        <div id="qa-top-question">
+          <p>Welcome to the Q&A site for <%= link_to "Question2Answer", "#" %>
+          <p>If you have a question about Q2A, please <%= link_to "ask in English", "#" %>
+          <p>To report a bug, please create a <%= link_to "new issue on Github", "https://github.com/q2a/question2answer/issues" %> or ask a question here with the <%= link_to "bug", "/qa/tag/bug", class: "qa-tag-link" %> tag.
+          <p>If you just want to try Q2A, please <%= link_to "use the demo site", "http://demo.question2answer.org/" %>
+        </div>
+      </div>
+      <div class="qa-widgets-side qa-widgets-side-low">
+        <div class="qa-widget-side qa-widget-side-low">
+          <h2>Categories</h2>
+          <ul class="qa-nav-cat-list qa-nav-cat-list-1">
+            <li class="qa-nav-cat-item qa-nav-cat-all">
+              <%= link_to "All categories", "#", class: "qa-nav-cat-link qa-nav-cat-selected" %>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-core">
+              <%= link_to "Q2A Core", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(10.1k)</span>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-plugins">
+              <%= link_to "Plugins", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(3k)</span>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-themes">
+              <%= link_to "Themes", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(681)</span>
+            </li>
+          </ul>
+          <div class="qa-nav-cat-clear">
+          </div>
+        </div>
+      </div>
+    </div>
+    
