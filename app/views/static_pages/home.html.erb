@@ -1,7 +1,5 @@
-<%= form_for @user, url: {controller: :static_pages, action: :home}, method: :get do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, class: "form-control" %>
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %>
-  <%= f.submit "Signin", class: "btn btn-primary" %>
-<% end %>
+<% provide :title, "Home"%>
+<div class="container">
+  <h1 style="text-align: center;">Welcome to Ruby on Rails</h1>
+  <p style="text-align: center; color: #808080">design by Luan, Duong, Duy</p>
+</div>
