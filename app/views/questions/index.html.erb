@@ -1,0 +1,12 @@
+<%= paginate @questions, theme: "twitter-bootstrap-4" %>
+<div>
+  <% @questions.each do |q| %>
+    <strong>Title:</strong><%= q.title %>
+    <br>
+    <%= q.content %>
+    <br>
+    <br>
+    <br>
+  <% end %>
+</div>
+<%= paginate @questions, theme: "twitter-bootstrap-4" %>
