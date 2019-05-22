@@ -17,3 +17,13 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$(document).on("turbolinks:load", function(){
+  setTimeout(function(){
+          $("#flash").animate({height: 0},500);
+          $("#flash").clearQueue();
+        }, 4000);
+  setTimeout(function(){
+          $('#flash').remove();
+        }, 4500);
+});
