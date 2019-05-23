@@ -24,6 +24,6 @@ $(document).on("turbolinks:load", function(){
           $("#flash").clearQueue();
         }, 4000);
   setTimeout(function(){
-          $('#flash').remove();
+          $("#flash").remove();
         }, 4500);
 });

@@ -10,7 +10,7 @@
       </div>
       <div class="qa-part-form">
         <%= form_for(@user) do |f| %>
-        <%= render "shared/error_messages" %>
+        <%= render "shared/error_messages", object: f.object %>
           <table class="qa-form-tall-table">
             <tr>
               <td class="qa-form-tall-label">
@@ -40,6 +40,16 @@
             <tr>
               <td class="qa-form-tall-data">
                 <%= f.password_field :password_confirmation,class: "qa-form-tall-text" %> 
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                Anti-spam verification
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                <%= recaptcha_tags %>
               </td>
             </tr>
             <tr>
