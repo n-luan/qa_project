@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   post "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/qa", to: "questions#index"
-  root "static_pages#home"  
+  resources :questions, except: :index
+  root "static_pages#home"
 end
