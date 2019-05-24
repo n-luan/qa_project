@@ -56,4 +56,7 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 
+  has_one :profile
+  delegate :full_name, to: :profile, prefix: true, allow_nil: true
+  delegate :user_avatar, to: :profile, prefix: true, allow_nil: true
 end
