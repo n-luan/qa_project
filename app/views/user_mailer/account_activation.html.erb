@@ -1,0 +1,11 @@
+<h1>Training Ruby on Rails</h1>
+
+<p>Hi <%= @user.email %></p>
+
+<p>
+Welcome to the project question2answer! Click on the link below to activate your account:
+</p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
+<p style="color: #C0C0C0">design by Luan, Duong, Duy</p>

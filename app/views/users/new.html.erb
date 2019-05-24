@@ -1,14 +1,16 @@
-<% provide :title, "Login" %>
+<% provide :title, "Sign up" %>
+
 <div class="qa-body-wrapper">
   <div class="qa-main-wrapper">
     <div class="qa-main">
       <div class="qa-main-heading">
         <h1>
-          Log in
+          Register as a new user
         </h1>
       </div>
       <div class="qa-part-form">
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_for(@user) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
           <table class="qa-form-tall-table">
             <tr>
               <td class="qa-form-tall-label">
@@ -27,25 +29,32 @@
             </tr>
             <tr>
               <td class="qa-form-tall-data">
-                <%= f.password_field :password, class: 'qa-form-tall-text' %>
-                <div class="qa-form-tall-note">
-                  <%= link_to "I forgot my password", "#" %>
-                </div>
+                <%= f.password_field :password, class: "qa-form-tall-text" %>
+              </td>
+            </tr>
+             <tr>
+              <td class="qa-form-tall-label">
+                <%= f.label :password_confirmation %>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <%= f.password_field :password_confirmation,class: "qa-form-tall-text" %> 
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-label">
-                <label>
-                  <%= f.label :remember_me, class: "checkbox inline" do %>
-                    <%= f.check_box :remember_me %>
-                    <span>Remember me on this computer</span>
-                  <% end %>
-                </label>
+                Anti-spam verification
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                <%= recaptcha_tags %>
               </td>
             </tr>
             <tr>
               <td colspan="1" class="qa-form-tall-buttons">
-                <%= f.submit "Log in", class: "qa-form-tall-button qa-form-tall-button-login" %>
+                <%= f.submit "Create my account", class: "qa-form-tall-button qa-form-tall-button-login" %>
               </td>
             </tr>
           </table>

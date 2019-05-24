@@ -2,7 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.1"
-
+gem "recaptcha", require: "recaptcha/rails"
+gem "letter_opener", :group => :development
 gem "rails", "~> 5.2.1"
 gem "dotenv-rails", groups: [:development, :test]
 gem "mysql2", ">= 0.4.4", "< 0.6.0"

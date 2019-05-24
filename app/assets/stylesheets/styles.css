@@ -110,7 +110,7 @@ a:hover {
 .qa-main-heading {
 	position: relative;
 	margin: 0 0 5px;
-	padding: 8px 52px 8px 20px;
+	padding: 11px;
 	background: #3498db;
 	color: #fff;
 }
@@ -3574,4 +3574,7 @@ input[type="submit"], button {
 .icon-link:before { content: '\e825'; }
 #qa-top-question {
 	font-size:13px;
+}
+#error_explanation li {
+	color: red
 }
