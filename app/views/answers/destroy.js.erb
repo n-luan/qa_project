@@ -1,0 +1,2 @@
+$("#answer_count").html("<%= @question.answers.size %>");
+$("#answers").html("<%= j render "answers/answer_list", question: @question %>");

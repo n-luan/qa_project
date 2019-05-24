@@ -17,11 +17,7 @@
                   <span class="qa-q-view-who">
                     <strong>By: </strong>
                     <%= link_to "#" do %>
-                      <% if logged_in? %>
-                        <%= (@question.user_name unless @question.user_name.empty?) || @question.user.profile_full_name %>
-                      <% else %>
-                        <%= @question.user_name %>
-                      <% end %>
+                      <%= @question.user.profile_full_name %>
                     <% end %>
                   </span>
                   <br>
@@ -74,38 +70,8 @@
           </div>
         </div>
       </div><!-- End Comments -->
-      <% if @question.answers.present? %>
-        <div class="qa-part-a-list"> <!-- Answers -->
-          <h5 id="a_list_title">
-            <span><%= @question.answers.size %></span>
-            Answer
-          </h5>
-          <div class="qa-a-list">
-            <div class="qa-a-list-item">
-              <div class="qa-a-item-main">
-                <% @question.answers.each do |n| %>
-                  <span class="qa-a-item-avatar-meta">
-                    <span class="qa-a-item-avatar">
-                      <%= link_to "#", class: "qa-avatar-link" %>
-                    </span>
-                    <span class="qa-a-item-meta">
-                      <a class="qa-a-item-what">Answered</a>
-                      <span class= "qa-a-item-when">
-                        <strong><%= time_ago_in_words(n.created_at) %>
-                          ago</strong> by
-                          <%= n.user.profile_full_name %>
-                      </span>
-                    </span>
-                  </span>
-                  <div class="qa-a-item-content qa-post-content">
-                    <%= n.content %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Answers -->
-      <% end %>
+      <%= render "answers/answer_form", question: @question %>
+      <%= render "answers/answers", question: @question %>
     </div>
   </div>
 </div>
