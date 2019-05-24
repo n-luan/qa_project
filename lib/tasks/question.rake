@@ -22,6 +22,15 @@ namespace :dummy_data do
     puts "create category successfully!"
   end
 
+  task create_tag: :environment do
+    50.times do |n|
+      content = Faker::Hacker.adjective
+      category = Category.all.to_a.sample
+    Tag.create! content: content, category: category
+    end
+    puts "Data seed completed"
+  end
+
   task create_question: :environment do
     puts "Finaly, you need create questions"
     100.times do |n|
@@ -29,10 +38,49 @@ namespace :dummy_data do
       content = Faker::Hacker.say_something_smart
       user = User.all.to_a.sample
       category = Category.all.to_a.sample
-
-      Question.create! title: title , content: content, user: user,
-        category: category
+    Question.create! title: title , content: content, user: user,
+      category: category
     end
     puts "The data questions created successfully."
+  end
+
+  task create_question_tags: :environment do
+    100.times do |n|
+      question = Question.all.to_a.sample
+      tag = Tag.all.to_a.sample
+    QuestionTag.create! question: question, tag: tag
+    end
+    puts "Data seed completed!"
+  end
+
+  task create_profile: :environment do
+    99.times do |n|
+      full_name = Faker::Name.name
+      address = Faker::Address.full_address
+      user = User.all.to_a.sample
+    Profile.create! full_name: full_name, address: address, user: user
+    end
+    puts "Data seed completed!"
+  end
+
+  task create_answer: :environment do
+    200.times do |n|
+      content = Faker::Lorem.sentence(3)
+      question = Question.all.to_a.sample
+      user = User.all.to_a.sample
+    Answer.create! content: content, question: question, user: user
+    end
+    puts "Data seed completed!"
+  end
+
+  task create_comment: :environment do
+    100.times do |n|
+      content = Faker::Lorem.paragraph(2)
+      commentable_type = ["Question","Answer"].sample
+      commentable_id = rand(1..100)
+      user = User.all.to_a.sample
+    Comment.create! content: content, commentable_id: commentable_id, commentable_type: commentable_type, user: user
+    end
+    puts "Data seed completed!"
   end
 end

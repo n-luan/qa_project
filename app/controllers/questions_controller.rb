@@ -4,4 +4,7 @@ class QuestionsController < ApplicationController
     @questions = Question.page(params[:page]).per(5)
   end
 
+  def show
+    @question = Question.find params[:id]
+  end
 end

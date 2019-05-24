@@ -1,0 +1,105 @@
+<div class="qa-body-wrapper">
+  <div class="qa-main-wrapper">
+    <div class="qa-main">
+      <div class="qa-main-heading">
+        <h1>
+          <%= @question.title %>
+        </h1>
+      </div>
+      <div class="qa-part-q-view">
+        <div class="qa-q-view">
+          <div class="qa-q-view-main">
+            <form action="#">
+              <span class="qa-q-view-avatar-meta">
+                <span class="qa-q-view-avatar">
+                </span>
+                <span class="qa-q-view-meta">
+                  <span class="qa-q-view-who">
+                    <strong>By: </strong>
+                    <%= link_to @question.user.profile_full_name, "#" %>
+                  </span>
+                  <br>
+                  <span class="qa-q-view-when">
+                    <strong>At: </strong>
+                    <i><%= @question.created_at.strftime("%T-%d/%m/%Y") %></i>
+                  </span>
+                  <br>
+                  <span class="qa-q-view-where">
+                    <strong>Category:</strong>
+                    <i><%= @question.category.name %></i>
+                  </span>
+                </span>
+              </span>
+              <div class="qa-q-view-content qa-post-content">
+                <%= @question.content %>
+              </div>
+              <div class="qa-q-view-tags">
+                <ul class="qa-q-view-tag-list">
+                  <li class="qa-q-view-tag-item">
+                    <% @question.tags.each do |t| %>
+                      <a class="qa-tag-link"><%= t.content %></a>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </form>
+            <% if @question.comments.present? %>
+              <div class="qa-q-view-c-list"> <!-- Comments -->
+                <div class="qa-c-list-item">
+                  <span class="qa-c-item-avatar-meta">
+                    <% @question.comments.each do |c| %>
+                      <span class="qa-c-item-avatar">
+                      </span>
+                      <span class="qa-c-item-meta">
+                        <a class="qa-a-item-what">Commented</a>
+                        <span class= "qa-q-view-where" >
+                          <strong><%= time_ago_in_words(c.created_at) %> ago</strong> by
+                            <%= c.user.profile_full_name %>
+                          </span>
+                        </span>
+                        <div class="qa-c-item-content qa-post-content">
+                          <%= c.content %>
+                        </div>
+                      </span>
+                    <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div><!-- End Comments -->
+      <% if @question.answers.present? %>
+        <div class="qa-part-a-list"> <!-- Answers -->
+          <h5 id="a_list_title">
+            <span><%= @question.answers.size %></span>
+            Answer
+          </h5>
+          <div class="qa-a-list">
+            <div class="qa-a-list-item">
+              <div class="qa-a-item-main">
+                <% @question.answers.each do |n| %>
+                  <span class="qa-a-item-avatar-meta">
+                    <span class="qa-a-item-avatar">
+                      <%= link_to "#", class: "qa-avatar-link" %>
+                    </span>
+                    <span class="qa-a-item-meta">
+                      <a class="qa-a-item-what">Answered</a>
+                      <span class= "qa-a-item-when">
+                        <strong><%= time_ago_in_words(n.created_at) %>
+                          ago</strong> by
+                          <%= n.user.profile_full_name %>
+                      </span>
+                    </span>
+                  </span>
+                  <div class="qa-a-item-content qa-post-content">
+                    <%= n.content %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Answers -->
+      <% end %>
+    </div>
+  </div>
+</div>
