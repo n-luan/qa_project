@@ -56,7 +56,15 @@
         method: :delete, data: { confirm: "Are you sure?"}, remote: true,
         class: "btn btn-link" %>
       </small>
-    <% end %>
+      <%= render "comments/comments", commentable: n, collection: n.comments %>
+      <%= link_to "Reply", new_comment_path(commentable_id: n.id, commentable_type: "answer"), class: "btn btn-link btn-comment", remote: true %>
+      <% if current_user? n.user %>
+        <small><%= link_to "Delete", question_answer_path(question, n),
+          method: :delete, data: { confirm: "Are you sure?"}, remote: true,
+          class: "btn btn-link" %>
+        </small>
+      <% end %>
+      <div id="<%= n.id %>" class= "answer"></div>
     <div id="<%= answer.id %>" class= "answer"></div>
   </div>
 <% end %>
