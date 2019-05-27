@@ -58,31 +58,13 @@
                 </ul>
               </div>
             </form>
-            <% if @question.comments.present? %>
-              <div class="qa-q-view-c-list"> <!-- Comments -->
-                <div class="qa-c-list-item">
-                  <span class="qa-c-item-avatar-meta">
-                    <% @question.comments.each do |c| %>
-                      <span class="qa-c-item-avatar">
-                      </span>
-                      <span class="qa-c-item-meta">
-                        <a class="qa-a-item-what">Commented</a>
-                        <span class= "qa-q-view-where" >
-                          <strong><%= time_ago_in_words(c.created_at) %> ago</strong> by
-                            <%= c.user.profile_full_name %>
-                          </span>
-                        </span>
-                        <div class="qa-c-item-content qa-post-content">
-                          <%= c.content %>
-                        </div>
-                      </span>
-                    <% end %>
-                </div>
-              </div>
-            <% end %>
+            <%= render "comments/comments", commentable: @question %>
           </div>
         </div>
-      </div><!-- End Comments -->
+      </div>
+      <%= link_to_if logged_in?, "Comment", new_comment_path(commentable_id:
+        @question.id, commentable_type: "question"),type:"button", class: "btn btn-primary btn-comment", data:{ toggle: "collapse" }, remote: true, style: "color:#FFFFFF;" %>
+      <div id="<%= @question.id %>" class="question"></div>
       <%= render "answers/answer_form", question: @question %>
       <%= render "answers/answers", question: @question %>
     </div>

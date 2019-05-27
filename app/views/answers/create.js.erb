@@ -1,5 +1,5 @@
 $(".btn-answer").addClass("collapsed");
 $(".collapse").removeClass("show");
-$("#answer_content").val("")
+$("#answer_content").val("");
 $("#answer_count").html("<%= @question.answers.size %>");
 $("#answers").html("<%= j render "answers/answer_list", question: @question %>");

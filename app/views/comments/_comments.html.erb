@@ -1,0 +1,5 @@
+<div class="qa-q-view-c-list"> <!-- Comments -->
+  <div id="comments-<%= commentable.class.name.downcase %>-<%= commentable.id %>" class="qa-c-list-item">
+    <%= render "comments/comment_list", commentable: commentable %>
+  </div>
+</div>
