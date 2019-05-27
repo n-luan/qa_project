@@ -1,0 +1,27 @@
+<div class="qa-a-list-item">
+  <div class="qa-a-item-main">
+    <% question.answers.each do |n| %>
+      <span class="qa-a-item-avatar-meta">
+        <span class="qa-a-item-avatar">
+          <%= link_to "#", class: "qa-avatar-link" %>
+        </span>
+        <span class="qa-a-item-meta">
+          <a class="qa-a-item-what"><i>Answered</i></a>
+          <span class= "qa-a-item-when">
+            <strong><%= time_ago_in_words(n.created_at) %>
+              ago by </strong>
+              <i><%= n.user.profile_full_name %></i>
+          </span>
+        </span>
+      </span>
+      <div class="qa-a-item-content qa-post-content">
+        <%= n.content %>
+      </div>
+      <% if current_user? n.user %>
+        <small><%= link_to "Delete", question_answer_path(question, n),
+          method: :delete, data: { confirm: "Are you sure?"}, remote: true %>
+        </small>
+      <% end %>
+    <% end %>
+  </div>
+</div>
