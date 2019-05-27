@@ -26,7 +26,7 @@ namespace :dummy_data do
     50.times do |n|
       content = Faker::Hacker.adjective
       category = Category.all.to_a.sample
-    Tag.create! content: content, category: category
+    Tag.create! content: content
     end
     puts "Data seed completed"
   end
