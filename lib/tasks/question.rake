@@ -25,10 +25,9 @@ namespace :dummy_data do
   end
 
   task create_tag: :environment do
-    50.times do |n|
+    100.times do |n|
       content = Faker::Hacker.adjective
-      category = Category.all.to_a.sample
-    Tag.create! content: content, category: category
+    Tag.create! content: content
     end
     puts "Data seed completed"
   end
@@ -36,7 +35,7 @@ namespace :dummy_data do
   task create_question: :environment do
     puts "Finaly, you need create questions"
     100.times do |n|
-      title = Faker::Hacker.noun
+      title = "How to get themes"
       content = Faker::Hacker.say_something_smart
       user = User.all.to_a.sample
       category = Category.all.to_a.sample
