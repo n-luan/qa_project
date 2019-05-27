@@ -1,0 +1,17 @@
+<div class="qa-body-wrapper">
+  <div class="qa-main-wrapper">
+    <div class="qa-main">
+      <div class="qa-main-heading">
+        <h1>
+          Most popular tags
+        </h1>
+      </div>
+      <div class="qa-part-ranking qa-ranking-tags-count">
+        <%= render partial: "tag", collection: @tags %>
+      </div>
+      <%= paginate @tags, theme: "twitter-bootstrap-4" %>
+    </div> <!-- END qa-main -->
+    <div id="qam-sidepanel-toggle"><i class="icon-left-open-big"></i></div>
+    <%= render "layouts/search" %>
+  </div> <!-- END main-wrapper -->
+</div> <!-- END body-wrapper -->
