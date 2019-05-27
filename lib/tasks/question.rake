@@ -8,7 +8,9 @@ namespace :dummy_data do
       email = "user-#{n+1}@email.com"
       password = "12345678"
       User.create!( email: email,
-                    password: password)
+                    password: password,
+                    activated: true,
+                    activated_at: Time.zone.now)
     end
     puts "create user successfully"
   end

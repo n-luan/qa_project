@@ -1,0 +1,22 @@
+<% if logged_in? %>
+  <button class="btn btn-primary btn-answer" type="button" data-toggle="collapse"
+  data-target="#answers_form" aria-expanded="false"
+  aria-controls="collapseExample">
+    Answer
+  </button>
+  <div id="answers_form" class="collapse">
+    <%= form_for([question, Answer.new(question: question)], remote: true) do
+      |f| %>
+      <td><%= f.text_area :content %></td>
+      <br>
+      <td><%= f.submit %></td>
+    <% end %>
+  </div>
+<% else %>
+  <button class="btn btn-primary btn-answer" type="button" data-toggle="collapse"
+  data-target="#answers_form" aria-expanded="false"
+  aria-controls="collapseExample">
+    <%= link_to "Login First", login_path, {:style=>"color:#FFFFFF;",
+      :class => "css_class"} %>
+  </button>
+<% end %>
