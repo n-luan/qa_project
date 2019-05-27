@@ -1,0 +1,8 @@
+<div id="collapse<%= comment.id %>" class="panel-collapse collapse">
+  <%= form_for([question, comment], remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content %>
+    </div>
+    <%= f.submit "Update", class: "btn btn-warning xs" %>
+  <% end %>
+</div>

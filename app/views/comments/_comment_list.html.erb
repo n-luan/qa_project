@@ -1,0 +1,26 @@
+<span class="qa-c-item-avatar-meta">
+  <% question.comments.each do |c| %>
+    <span class="qa-c-item-avatar">
+    </span>
+    <span class="qa-c-item-meta">
+      <a class="qa-a-item-what">Commented</a>
+      <span class= "qa-q-view-where" >
+        <strong><%= time_ago_in_words(c.created_at) %> ago</strong> by
+          <%= c.user.profile_full_name %>
+        </span>
+      </span>
+      <div class="qa-c-item-content qa-post-content">
+        <%= c.content %>
+      </div>
+      <% if current_user? c.user %>
+        <i><%= link_to "Edit", question_comment_path(question, c),
+          data: { toggle:"collapse", target: "#collapse#{c.id}"} %>
+        </i>
+          /
+        <i><%= link_to "Delete", question_comment_url(question, c),
+          method: :delete, data: { confirm: "Are you sure?"}, remote: true %></i>
+      <% end  %>
+    </span>
+    <%= render "comments/edit_form", question: question, comment: c %>
+  <% end %>
+</span>

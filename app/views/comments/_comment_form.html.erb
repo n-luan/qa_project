@@ -1,0 +1,21 @@
+<% if logged_in? %>
+  <button class="btn btn-primary btn-comment" type="button"
+  data-toggle="collapse" data-target="#comment_form" aria-expanded="false"
+  aria-controls="collapseExample">
+    Comment
+  </button>
+  <div id="comment_form" class="collapse">
+    <%= form_for([ question, question.comments.build], remote: true) do
+      |f| %>
+      <td><%= f.text_area :content %></td>
+      <br>
+      <td><%= f.submit %></td>
+    <% end %>
+  </div>
+<% else %>
+  <button class="btn btn-primary btn-comment" type="button"
+  data-toggle="collapse" data-target="#comment_form" aria-expanded="false"
+  aria-controls="collapseExample" disabled>
+    Comment
+  </button>
+<% end %>

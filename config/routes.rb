@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: :edit
   resources :questions do
     resources :answers, except: [:index, :show, :edit, :update]
+    resources :comments, except: :index
   end
 end

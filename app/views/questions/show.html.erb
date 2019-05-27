@@ -45,31 +45,11 @@
                 </ul>
               </div>
             </form>
-            <% if @question.comments.present? %>
-              <div class="qa-q-view-c-list"> <!-- Comments -->
-                <div class="qa-c-list-item">
-                  <span class="qa-c-item-avatar-meta">
-                    <% @question.comments.each do |c| %>
-                      <span class="qa-c-item-avatar">
-                      </span>
-                      <span class="qa-c-item-meta">
-                        <a class="qa-a-item-what">Commented</a>
-                        <span class= "qa-q-view-where" >
-                          <strong><%= time_ago_in_words(c.created_at) %> ago</strong> by
-                            <%= c.user.profile_full_name %>
-                          </span>
-                        </span>
-                        <div class="qa-c-item-content qa-post-content">
-                          <%= c.content %>
-                        </div>
-                      </span>
-                    <% end %>
-                </div>
-              </div>
-            <% end %>
+            <%= render "comments/comments", question: @question %>
           </div>
         </div>
-      </div><!-- End Comments -->
+      </div>
+      <%= render "comments/comment_form", question: @question %>
       <%= render "answers/answer_form", question: @question %>
       <%= render "answers/answers", question: @question %>
     </div>

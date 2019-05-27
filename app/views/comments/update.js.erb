@@ -1,0 +1,4 @@
+$(".btn-comment").addClass("collapsed");
+$(".collapse").removeClass("show");
+$("#comment_content").val("");
+$("#comments").html("<%= j render "comments/comment_list", question: @question %>");
