@@ -14,7 +14,8 @@
 //= require ckeditor-jquery
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require_directory ./channels/
+//= require_directory ./ckeditor/
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
