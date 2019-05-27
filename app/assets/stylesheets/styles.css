@@ -3591,3 +3591,56 @@ input[type="submit"], button {
     color: $state-danger-text;
   }
 }
+
+.users {
+  list-style: none;
+  margin: 0px;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid;
+  }
+}
+
+.dropdown.show > .dropdown-menu.show{
+	background-color: #33495e;
+	margin-right: 90%;
+	text-align: left;
+	font-size: 14px;
+}
+.dropdown.show > .dropdown-menu.show li{
+	margin-left: 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 650px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+#profile_avatar{
+	width: 100%
+}
