@@ -1,0 +1,92 @@
+<% provide :title, "Reset password" %>
+
+<div class="qa-body-wrapper">
+  <div class="qa-main-wrapper">
+    <div class="qa-main">
+      <div class="qa-main-heading">
+        <h1>
+          Forgot password
+        </h1>
+      </div>
+      <div class="qa-part-form">
+        <%= form_for(@user, url: password_reset_path(params[:id])) do |f|%>
+        <%= render"shared/error_messages", object: f.object %>
+        <%= hidden_field_tag :email, @user.email %>        
+          <table class="qa-form-tall-table">
+            <tr>
+              <td class="qa-form-tall-label">
+                <%= f.label :New_password %>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <%= f.password_field :password, class: "qa-form-tall-text" %>
+              </td>
+            </tr>
+             <tr>
+              <td class="qa-form-tall-label">
+                <%= f.label :Password_confirmation %>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <%= f.password_field :password_confirmation,class: "qa-form-tall-text" %> 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1" class="qa-form-tall-buttons">
+                <%= f.submit "Update password", class: "qa-form-tall-button qa-form-tall-button-login" %>
+              </td>
+            </tr>
+          </table>
+          <input name="dologin" type="hidden" value="1">
+        <% end %>
+      </div>
+    </div>
+    <div class="qa-sidepanel" id="qam-sidepanel-mobile">
+      <div class="qam-search turquoise ">
+        <div class="qa-search">
+          <form method="get" action="./search">
+            <input type="text" placeholder="Search..." name="q" value="" class="qa-search-field">
+            <input type="submit" value="Search" class="qa-search-button">
+          </form>
+        </div>
+      </div>
+      <div class="qa-sidebar wet-asphalt">
+        <div id="qa-top-question">
+          <p>Welcome to the Q&A site for <%= link_to "Question2Answer", "#" %>
+          <p>If you have a question about Q2A, please <%= link_to "ask in English", "#" %>
+          <p>To report a bug, please create a 
+            <%= link_to "new issue on Github", "https://github.com/q2a/question2answer/issues" %> 
+            or ask a question here with the <%= link_to "bug", "/qa/tag/bug", class: "qa-tag-link" %> tag.
+          <p>If you just want to try Q2A, please 
+            <%= link_to "use the demo site", "http://demo.question2answer.org/" %>
+        </div>
+      </div>
+      <div class="qa-widgets-side qa-widgets-side-low">
+        <div class="qa-widget-side qa-widget-side-low">
+          <h2>Categories</h2>
+          <ul class="qa-nav-cat-list qa-nav-cat-list-1">
+            <li class="qa-nav-cat-item qa-nav-cat-all">
+              <%= link_to "All categories", "#", class: "qa-nav-cat-link qa-nav-cat-selected" %>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-core">
+              <%= link_to "Q2A Core", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(10.1k)</span>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-plugins">
+              <%= link_to "Plugins", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(3k)</span>
+            </li>
+            <li class="qa-nav-cat-item qa-nav-cat-themes">
+              <%= link_to "Themes", "#", class: "qa-nav-cat-link" %>
+              <span class="qa-nav-cat-note">(681)</span>
+            </li>
+          </ul>
+          <div class="qa-nav-cat-clear">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/signup", to: "users#new"
   get "/qa", to: "questions#index"
   resources :users
+  resources :questions, except: :index
+  resources :password_resets, only: [:new, :edit, :create, :update]
   resources :account_activations, only: :edit
   resources :questions, except: :index do
     resources :answers, except: [:index, :show, :edit, :update]
