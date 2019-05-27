@@ -16,7 +16,13 @@
                 <span class="qa-q-view-meta">
                   <span class="qa-q-view-who">
                     <strong>By: </strong>
-                    <%= link_to @question.user.profile_full_name, "#" %>
+                    <%= link_to "#" do %>
+                      <% if logged_in? %>
+                        <%= (@question.user_name unless @question.user_name.empty?) || @question.user.profile_full_name %>
+                      <% else %>
+                        <%= @question.user_name %>
+                      <% end %>
+                    <% end %>
                   </span>
                   <br>
                   <span class="qa-q-view-when">
