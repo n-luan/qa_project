@@ -2,6 +2,21 @@ namespace :dummy_data do
   desc "Firstly, you should create user. Next, you should create category.
     Finaly, you need create questions"
 
+  task create: :environment do
+    puts "Create dummy data"
+
+    # Rake::Task["dummy_data:create_user"].invoke
+    Rake::Task["dummy_data:create_profile"].invoke
+    Rake::Task["dummy_data:create_category"].invoke
+    Rake::Task["dummy_data:create_tag"].invoke
+    Rake::Task["dummy_data:create_question"].invoke
+    Rake::Task["dummy_data:create_question_tags"].invoke
+    Rake::Task["dummy_data:create_answer"].invoke
+    Rake::Task["dummy_data:create_comment"].invoke
+
+    puts "Create dummy data successfully"
+  end
+
   task create_user: :environment do
     puts "Firstly, you should create user"
     99.times do |n|
