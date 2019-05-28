@@ -15,7 +15,7 @@
         </span>
       </span>
       <div class="qa-a-item-content qa-post-content">
-        <%= n.content %>
+        <%= simple_format n.content.to_s.gsub("\n", "<br>") %>
       </div>
       <% if current_user? n.user %>
         <small><%= link_to "Delete", question_answer_path(question, n),
