@@ -1,24 +1,27 @@
 # README
+* Setup environtment variable
+- Create .env file
+```
+cd qa_project
+cp .env.example .env
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- change variable in `.env` file
 
-Things you may want to cover:
 
-* Ruby version
+* Create all dummy data
+```
+rails dummy_data:create
+```
+* if you don't want to create all, create dummy data separately
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails dummy_data:create_user
+rails dummy_data:create_profile
+rails dummy_data:create_category
+rails dummy_data:create_tag
+rails dummy_data:create_question
+rails dummy_data:create_question_tags
+rails dummy_data:create_answer
+rails dummy_data:create_comment
+```
