@@ -1057,9 +1057,10 @@ blockquote p {
 	position: relative;
 }
 
-.qa-vote-up-button, .qa-vote-down-button, .qa-voted-up-button, .qa-voted-down-button, .qa-vote-up-disabled, .qa-vote-down-disabled {
+.qa-vote-up-button, .qa-vote-down-button, .qa-voted-up-button,
+.qa-voted-down-button, .qa-vote-up-disabled, .qa-vote-down-disabled {
 	text-indent: -9999px;
-	background: url('images/vote-buttons-2.png') no-repeat;
+	background: url("/assets/vote-buttons-2.png") no-repeat;
 	width: 16px;
 	height: 10px;
 	border: none;

@@ -1,0 +1,77 @@
+<div class="qa-q-list-item" id="q75352">
+  <div class="qa-q-item-stats">
+    <div class="qa-voting qa-voting-net" id="voting_75352">
+      <div class="qa-vote-buttons qa-vote-buttons-net">
+        <input title="Click to vote up" name="vote_75352_1_q75352"
+        onclick="return qa_vote_click(this);" type="submit" value="+"
+        class="qa-vote-first-button qa-vote-up-button">
+        <input title="Click to vote down" name="vote_75352_-1_q75352"
+        onclick="return qa_vote_click(this);" type="submit" value="&ndash;"
+        class="qa-vote-second-button qa-vote-down-button">
+      </div>
+      <div class="qa-vote-count qa-vote-count-net">
+        <span class="qa-netvote-count">
+          <span class="qa-netvote-count-data">0</span>
+          <span class="qa-netvote-count-pad"> votes</span>
+        </span>
+      </div>
+      <div class="qa-vote-clear">
+      </div>
+    </div>
+    <span class="qa-a-count qa-a-count-zero">
+      <span class="qa-a-count-data"><%= question.answers.count %></span>
+      <span class="qa-a-count-pad"> answers</span>
+    </span>
+    <!-- <span class="qa-view-count">
+      <span class="qa-view-count-data">9</span><span class="qa-view-count-pad"> views</span>
+    </span> -->
+  </div>
+  <div class="qa-q-item-main">
+    <div class="qa-q-item-title">
+      <%= link_to question do %>
+        <span><%= question.title %></span>
+      <% end %>
+    </div>
+    <span class="qa-q-item-avatar-meta">
+      <span class="qa-q-item-avatar">
+        <%= link_to question.user, class: "qa-avatar-link" do %>
+          <%= image_tag "avatar.jpeg", class: "qa-avatar-image", width: "20", height: "20" %>
+        <% end %>
+      </span>
+      <span class="qa-q-item-meta">
+        <span class="qa-q-item-what">asked</span>
+        <span class="qa-q-item-when">
+          <span class="qa-q-item-when-data">
+            <%= time_ago_in_words(question.created_at) %>
+          </span>
+          <span class="qa-q-item-when-pad"> ago</span>
+        </span>
+        <span class="qa-q-item-where">
+          <span class="qa-q-item-where-pad">in </span>
+            <span class="qa-q-item-where-data">
+              <%= link_to question.category.name, "", class: "qa-category-link" %>
+            </span>
+          </span>
+        <span class="qa-q-item-who">
+          <span class="qa-q-item-who-pad">by </span>
+          <span class="qa-q-item-who-data">
+            <%= link_to (question.user if question.user_id.present?) do %>
+              <%= (question.user.profile_full_name if question.user_id.present?) || "anonymous" %>
+            <% end %>
+          </span>
+        </span>
+      </span>
+    </span>
+    <div class="qa-q-item-tags">
+      <ul class="qa-q-item-tag-list">
+        <% question.tags.each do |tag| %>
+          <li class="qa-q-item-tag-item">
+            <%= link_to tag.content, tag, class: "qa-tag-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="qa-q-item-clear">
+  </div>
+</div> <!-- END qa-q-list-item -->
