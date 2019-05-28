@@ -16,8 +16,8 @@
                 <span class="qa-q-view-meta">
                   <span class="qa-q-view-who">
                     <strong>By: </strong>
-                    <%= link_to "#" do %>
-                      <%= @question.user.profile_full_name %>
+                    <%= link_to (@question.user if @question.user_id.present?) do %>
+                      <%= @question.user_name.presence || (@question.user.profile_full_name if @question.user_id.present?).presence || "anonymuos" %>
                     <% end %>
                   </span>
                   <br>
@@ -39,7 +39,7 @@
                 <ul class="qa-q-view-tag-list">
                   <li class="qa-q-view-tag-item">
                     <% @question.tags.each do |t| %>
-                      <a class="qa-tag-link"><%= t.content %></a>
+                    <%= link_to t.content, t, class: "qa-tag-link" %>
                     <% end %>
                   </li>
                 </ul>
