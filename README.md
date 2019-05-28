@@ -17,7 +17,6 @@ rails dummy_data:create
 
 ```
 rails dummy_data:create_user
-rails dummy_data:create_profile
 rails dummy_data:create_category
 rails dummy_data:create_tag
 rails dummy_data:create_question

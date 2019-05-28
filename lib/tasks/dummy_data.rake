@@ -5,8 +5,7 @@ namespace :dummy_data do
   task create: :environment do
     puts "Create dummy data"
 
-    # Rake::Task["dummy_data:create_user"].invoke
-    Rake::Task["dummy_data:create_profile"].invoke
+    Rake::Task["dummy_data:create_user"].invoke
     Rake::Task["dummy_data:create_category"].invoke
     Rake::Task["dummy_data:create_tag"].invoke
     Rake::Task["dummy_data:create_question"].invoke
@@ -22,10 +21,14 @@ namespace :dummy_data do
     99.times do |n|
       email = "user-#{n+1}@email.com"
       password = "12345678"
-      User.create!( email: email,
+      user = User.create!( email: email,
                     password: password,
                     activated: true,
                     activated_at: Time.zone.now)
+
+      full_name = Faker::Name.name
+      address = Faker::Address.full_address
+      Profile.create! full_name: full_name, address: address, user: user
     end
     puts "create user successfully"
   end
@@ -65,16 +68,6 @@ namespace :dummy_data do
       question = Question.all.to_a.sample
       tag = Tag.all.to_a.sample
     QuestionTag.create! question: question, tag: tag
-    end
-    puts "Data seed completed!"
-  end
-
-  task create_profile: :environment do
-    99.times do |n|
-      full_name = Faker::Name.name
-      address = Faker::Address.full_address
-      user = User.all.to_a.sample
-    Profile.create! full_name: full_name, address: address, user: user
     end
     puts "Data seed completed!"
   end

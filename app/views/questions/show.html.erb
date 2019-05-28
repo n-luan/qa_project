@@ -33,7 +33,7 @@
                 </span>
               </span>
               <div class="qa-q-view-content qa-post-content">
-                <%= @question.content %>
+                <%= simple_format @question.content.to_s %>
               </div>
               <div class="qa-q-view-tags">
                 <ul class="qa-q-view-tag-list">
