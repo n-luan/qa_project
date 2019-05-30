@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/signup", to: "users#new"
   get "/qa", to: "questions#index"
-
+  resources :profiles, only: [:edit, :update]
   resources :tags
   resources :users
   resources :questions, except: :index

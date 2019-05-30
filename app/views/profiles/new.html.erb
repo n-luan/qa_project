@@ -1,43 +1,54 @@
-<% provide :title, "Change password" %>
+<% provide :title, "New profile" %>
 
 <div class="qa-body-wrapper">
   <div class="qa-main-wrapper">
     <div class="qa-main">
       <div class="qa-main-heading">
-        <h1>Change password</h1>
+        <h1>New profile</h1>
       </div>
       <div class="qa-part-form">
-        <%= form_for(@user) do |f| %>
+        <%= form_for(@profile) do |f| %>
         <%= render "shared/error_messages", object: f.object %>
           <table class="qa-form-tall-table">
             <tr>
               <td class="qa-form-tall-label">
-                <%= f.label :New_password %>
+                <%= f.label :Avatar %>
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-data">
-                <%= f.password_field :password, class: "qa-form-tall-text" %>
+                <span class="avatar">
+                  <%= f.file_field :avatar %>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-label">
+                <%= f.label :Full_name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="qa-form-tall-data">
+                <%= f.text_field :full_name, class: "qa-form-tall-text" %>
               </td>
             </tr>
              <tr>
               <td class="qa-form-tall-label">
-                <%= f.label :confirm_password %>
+                <%= f.label :Address %>
               </td>
             </tr>
             <tr>
               <td class="qa-form-tall-data">
-                <%= f.password_field :password_confirmation,
-                  class: "qa-form-tall-text" %>
+                <%= f.text_field :address, class: "qa-form-tall-text" %>
               </td>
             </tr>
             <tr>
               <td colspan="1" class="qa-form-tall-buttons">
-                <%= f.submit "Update password", class: "qa-form-tall-button qa-form-tall-button-login" %>
+                <%= f.submit "Create profile", 
+                class: "qa-form-tall-button qa-form-tall-button-login" %>
               </td>
             </tr>
           </table>
-          <input name="dologin" type="hidden" value="1">
         <% end %>
       </div>
     </div>
@@ -45,7 +56,8 @@
       <div class="qam-search turquoise ">
         <div class="qa-search">
           <form method="get" action="./search">
-            <input type="text" placeholder="Search..." name="q" value="" class="qa-search-field">
+            <input type="text" placeholder="Search..." name="q" value="" 
+            class="qa-search-field">
             <input type="submit" value="Search" class="qa-search-button">
           </form>
         </div>
@@ -53,9 +65,16 @@
       <div class="qa-sidebar wet-asphalt">
         <div id="qa-top-question">
           <p>Welcome to the Q&A site for <%= link_to "Question2Answer", "#" %>
-          <p>If you have a question about Q2A, please <%= link_to "ask in English", "#" %>
-          <p>To report a bug, please create a <%= link_to "new issue on Github", "https://github.com/q2a/question2answer/issues" %> or ask a question here with the <%= link_to "bug", "/qa/tag/bug", class: "qa-tag-link" %> tag.
-          <p>If you just want to try Q2A, please <%= link_to "use the demo site", "http://demo.question2answer.org/" %>
+          <p>If you have a question about Q2A, please 
+            <%= link_to "ask in English", "#" %>
+          <p>To report a bug, please create a 
+            <%= link_to "new issue on Github", 
+            "https://github.com/q2a/question2answer/issues" %> 
+            or ask a question here with the 
+            <%= link_to "bug", "/qa/tag/bug", class: "qa-tag-link" %> tag.
+          <p>If you just want to try Q2A, please 
+            <%= link_to "use the demo site", 
+            "http://demo.question2answer.org/" %>
         </div>
       </div>
       <div class="qa-widgets-side qa-widgets-side-low">
@@ -63,7 +82,8 @@
           <h2>Categories</h2>
           <ul class="qa-nav-cat-list qa-nav-cat-list-1">
             <li class="qa-nav-cat-item qa-nav-cat-all">
-              <%= link_to "All categories", "#", class: "qa-nav-cat-link qa-nav-cat-selected" %>
+              <%= link_to "All categories", "#", 
+              class: "qa-nav-cat-link qa-nav-cat-selected" %>
             </li>
             <li class="qa-nav-cat-item qa-nav-cat-core">
               <%= link_to "Q2A Core", "#", class: "qa-nav-cat-link" %>

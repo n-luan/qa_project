@@ -3,9 +3,18 @@
     <div class="qam-account-items-wrapper">
       <div class="qa-nav-main-item qa-nav-main-login">
         <% if logged_in? %>
-          <%= link_to logout_path, method: :delete ,class: "qa-nav-main-link" do %>
-            Logout
-          <% end %>
+          <div class="users">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle qa-nav-main-link" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Change password", edit_user_path(current_user) %></li>
+                <li><%= link_to logout_path, method: :delete do %> Logout <% end %></li>
+              </ul>
+            </li>
+          </div>
         <% else %>
           <%= link_to login_path, class: "qa-nav-main-link" do %>
             Login
@@ -26,7 +35,7 @@
           <% end %>
         </li>
         <li class="qa-nav-main-item qa-nav-main-questions">
-          <%= link_to questions_path, class: "qa-nav-main-link" do %>
+          <%= link_to qa_path, class: "qa-nav-main-link" do %>
             Questions
           <% end %>
         </li>
@@ -41,7 +50,7 @@
           <% end %>
         </li>
         <li class="qa-nav-main-item qa-nav-main-tag">
-          <%= link_to tags_path, class: "qa-nav-main-link" do %>
+          <%= link_to "#", class: "qa-nav-main-link" do %>
             Tags
           <% end %>
         </li>
