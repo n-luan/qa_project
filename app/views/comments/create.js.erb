@@ -1,0 +1,6 @@
+$(".<%= @commentable.class.name.downcase %>#<%= @commentable.id %>").html("");
+<% if params[:comment][:commentable_type] == "question" %>
+  $("#comments-question-<%= @commentable.id %>").html("<%= j render "comments/comment_list", commentable: @commentable %>");
+<% elsif params[:comment][:commentable_type] == "answer" %>
+  $("#comments-answer-<%= @commentable.id %>").html("<%= j render "comments/comment_list", commentable: @commentable %>");
+<% end %>
