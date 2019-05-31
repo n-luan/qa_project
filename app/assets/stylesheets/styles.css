@@ -2539,7 +2539,7 @@ input[type="submit"], button {
 	display: block;
 	margin: 0;
 	position: relative;
-	background: url('images/answer-select.png') no-repeat center;
+	background: url("/assets/answer-select.png") no-repeat center;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 }

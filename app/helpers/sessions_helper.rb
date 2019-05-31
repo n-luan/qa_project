@@ -42,4 +42,9 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
+  def check_login
+    return if logged_in?
+    redirect_to login_path
+  end
+
 end

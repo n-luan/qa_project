@@ -1,0 +1,2 @@
+$("#question_voted").html("<%= j render("votes/vote", question: @question) %>");
+$("#question-voted-<%= @question.id %>").html("<%= j render("votes/vote", question: @question) %>");

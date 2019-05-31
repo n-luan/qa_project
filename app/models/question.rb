@@ -3,6 +3,7 @@ class Question < ApplicationRecord
   has_many :tags, through: :question_tags
   has_many :comments, as: :commentable
   has_many :answers, dependent: :destroy
+  has_many :votes, as: :voteable, dependent: :destroy
   belongs_to :user, optional: true
   belongs_to :category
   accepts_nested_attributes_for :tags, update_only: true, reject_if: :blank?

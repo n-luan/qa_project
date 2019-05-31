@@ -31,7 +31,7 @@
       <div class="qa-part-q-list">
         <form method="post" action="./">
           <div class="qa-q-list">
-            <%= render partial:"shared/question", collection: @questions, as: :question %>
+            <%= render "shared/question", questions: @questions %>
             <%= paginate @questions, theme: "twitter-bootstrap-4" %>
           </div> <!-- END qa-q-list -->
           <div class="qa-q-list-form">

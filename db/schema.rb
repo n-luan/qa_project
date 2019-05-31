@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_085059) do
+ActiveRecord::Schema.define(version: 2019_05_31_042818) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_085059) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count_vote", default: 0
+    t.boolean "select"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -81,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_085059) do
     t.datetime "updated_at", null: false
     t.string "user_name"
     t.string "user_email"
+    t.integer "count_vote", default: 0
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
@@ -111,6 +114,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_085059) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "up"
+    t.boolean "down"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 

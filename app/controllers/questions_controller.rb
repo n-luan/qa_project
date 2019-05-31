@@ -20,15 +20,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find_by id: params[:id]
+    @question = Question.find(params[:id])
+    @count_vote = @question.count_vote
+    @vote = Vote.find_by voteable_id: @question.id
   end
 
   def index
     @questions = Question.page(params[:page]).per(20).order("created_at desc")
-  end
-
-  def show
-    @question = Question.find params[:id]
   end
 
   private

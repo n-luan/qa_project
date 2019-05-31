@@ -1,0 +1,20 @@
+<%= form_for Vote.new, url:{controller: :votes, action: :create}, method: :post, remote: true do |f| %>
+  <div class="qa-q-view-stats">
+    <div class="qa-voting qa-voting-net" id="voting_74790">
+      <div class="qa-vote-buttons qa-vote-buttons-net">
+        <%= hidden_field_tag :question_id, question.id %>
+        <%= f.submit class: "qa-vote-first-button qa-vote-up-button", value: "up" %>
+        <%= f.submit class: "qa-vote-first-button qa-vote-down-button", value: "down" %>
+      </div>
+      <div class="qa-vote-count qa-vote-count-net">
+        <span class="qa-netvote-count">
+          <span class="qa-netvote-count-data"><%= ("" if question.count_vote.negative? || question.count_vote == 0) || "+" %><%= question.count_vote %></span>
+          <span class="qa-netvote-count-pad"> votes
+            <meta itemprop="upvoteCount" content="2"></span>
+        </span>
+      </div>
+      <div class="qa-vote-clear">
+      </div>
+    </div>
+  </div>
+<% end %>

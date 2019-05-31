@@ -8,6 +8,8 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: 1}
+  has_many :questions, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   def remember
     self.remember_token = User.new_token
