@@ -1,0 +1,4 @@
+$(".btn-tag").addClass("collapsed");
+$(".collapse").removeClass("show");
+$("#tag_content").val("");
+$("#tags").html("<%= j render "tag_list", tags: @tags %>");

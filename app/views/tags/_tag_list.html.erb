@@ -1,0 +1,6 @@
+<% tags.each do |tag| %>
+  <span class="qa-top-tags-count"><%= tag.questions.count %> &#215;</span>
+  <span class="qa-top-tags-label">
+    <%= link_to "#{tag.content}", tag_path(tag), class: "qa-tag-link" %>
+  </span>
+<% end %>

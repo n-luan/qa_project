@@ -7,7 +7,11 @@
         </h1>
       </div>
       <div class="qa-part-ranking qa-ranking-tags-count">
-        <%= render partial: "tag", collection: @tags %>
+        <%= render "tags/form", tag: @tag %>
+        <br>
+        <span id="tags">
+          <%= render "tag_list", tags: @tags %>
+        </span>
       </div>
       <%= paginate @tags, theme: "twitter-bootstrap-4" %>
     </div> <!-- END qa-main -->
