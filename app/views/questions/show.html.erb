@@ -8,6 +8,19 @@
       </div>
       <div class="qa-part-q-view">
         <div class="qa-q-view">
+          <div id="question_voted">
+            <% if logged_in? %>
+              <% if !current_user.votes.find_by(voteable_id: @question.id).presence %>
+                <%= render "votes/vote", question: @question %>
+              <% elsif current_user.votes.find_by(voteable_id: @question.id).up == true %>
+                <%= render "votes/vote_up", question: @question %>
+              <% elsif current_user.votes.find_by(voteable_id: @question.id).down == true %>
+                <%= render "votes/vote_down", question: @question %>
+              <% end %>
+            <% else %>
+              <%= render "votes/vote", question: @question %>
+            <% end %>
+          </div>
           <div class="qa-q-view-main">
             <form action="#">
               <span class="qa-q-view-avatar-meta">
@@ -73,5 +86,6 @@
       <%= render "answers/answer_form", question: @question %>
       <%= render "answers/answers", question: @question %>
     </div>
+    <%= render "layouts/search" %>
   </div>
 </div>

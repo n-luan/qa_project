@@ -1,0 +1,5 @@
+<% if current_user.votes.find_by(voteable_id: @answer.id).up == true %>
+  $("#answer-voted-<%= @answer.id %>").html("<%= j render("voteables/vote_answer_up", answer: @answer) %>");
+<% else %>
+  $("#answer-voted-<%= @answer.id %>").html("<%= j render("voteables/vote_answer_down", answer: @answer) %>");
+<% end %>

@@ -1,0 +1,7 @@
+<div class="qa-a-selection">
+  <%= form_for answer, url: selection_path(answer), remote: true do |f| %>
+    <%= hidden_field_tag :answer_id, answer.id %>
+    <%= f.submit class: "qa-a-unselect-button", value: "" %>
+  <% end %>
+  <div class="qa-a-selected-text">Best answer</div>
+</div>

@@ -4,7 +4,6 @@
       <div class="qa-widgets-main qa-widgets-main-top">
         <div class="qa-widget-main qa-widget-main-top">
           <div class="qa-ask-box">
-            <form method="post" action="./ask?cat=">
               <table class="qa-form-tall-table" style="width:100%">
                 <tr style="vertical-align:middle;">
                   <td class="qa-form-tall-label" style="width: 1px;
@@ -17,7 +16,6 @@
                 </tr>
               </table>
               <input type="hidden" name="doask1" value="1">
-            </form>
           </div>
         </div>
       </div>
@@ -28,15 +26,13 @@
         </h1>
       </div>
       <div class="qa-part-q-list">
-        <form method="post" action="./">
           <div class="qa-q-list">
-            <%= render partial:"shared/question", collection: @questions, as: :question %>
+            <%= render "shared/question", questions: @questions %>
             <%= paginate @questions, theme: "twitter-bootstrap-4" %>
           </div> <!-- END qa-q-list -->
           <div class="qa-q-list-form">
             <input name="code" type="hidden" value="0-1559007869-e02f5b9cb255dfff1fba19c7a1b9c31f87795530">
           </div>
-        </form>
       </div>
       <div class="qa-suggest-next">
         To see more, click for the <a href="./questions">full list of questions</a>

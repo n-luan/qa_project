@@ -1,6 +1,19 @@
-<div class="qa-a-list-item">
-  <div class="qa-a-item-main">
-    <% question.answers.each do |n| %>
+<% question.answers.each do |answer| %>
+  <div class="qa-a-list-item">
+    <div id="answer-voted-<%= answer.id %>">
+      <% if logged_in? %>
+        <% if !current_user.votes.find_by(voteable_id: answer.id).presence %>
+          <%= render "voteables/vote_answer", answer: answer %>
+        <% elsif current_user.votes.find_by(voteable_id: answer.id).up == true %>
+          <%= render "voteables/vote_answer_up", answer: answer %>
+        <% elsif current_user.votes.find_by(voteable_id: answer.id).down == true %>
+          <%= render "voteables/vote_answer_down", answer: answer %>
+        <% end %>
+      <% else %>
+        <%= render "voteables/vote_answer", answer: answer %>
+      <% end %>
+    </div>
+    <div class="qa-a-item-main">
       <span class="qa-a-item-avatar-meta">
         <span class="qa-a-item-avatar">
           <%= link_to "#", class: "qa-avatar-link" %>
@@ -8,20 +21,33 @@
         <span class="qa-a-item-meta">
           <a class="qa-a-item-what"><i>Answered</i></a>
           <span class= "qa-a-item-when">
-            <strong><%= time_ago_in_words(n.created_at) %>
+            <strong><%= time_ago_in_words(answer.created_at) %>
               ago by </strong>
-              <i><%= n.user.profile_full_name %></i>
+              <i><%= answer.user.profile_full_name %></i>
           </span>
         </span>
       </span>
-      <div class="qa-a-item-content qa-post-content">
-        <%= simple_format n.content.to_s.gsub("\n", "<br>") %>
+      <div class="qa-a-item-selected">
+        <div class="qa-a-item-content qa-post-content">
+          <%= simple_format answer.content.to_s.gsub("\n", "<br>") %>
+        </div>
+        <div id="best-answer-<%= answer.id %>">
+          <% if logged_in? && current_user.id == @question.user_id %>
+            <% if (@question.answers.find_by select: true).presence && (answer.select == true) %>
+                <%= render "votes/selected", answer: answer %>
+            <% elsif !(@question.answers.find_by select: true).presence %>
+                <%= render "votes/select", answer: answer %>
+            <% end %>
+          <% else %>
+            <%= render "votes/selected", answer: answer if ((@question.answers.find_by select: true).presence && (answer.select == true)) %>
+          <% end %>
+        </div>
       </div>
-      <% if current_user? n.user %>
-        <small><%= link_to "Delete", question_answer_path(question, n),
+      <% if current_user? answer.user %>
+        <small><%= link_to "Delete", question_answer_path(question, answer),
           method: :delete, data: { confirm: "Are you sure?"}, remote: true %>
         </small>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
