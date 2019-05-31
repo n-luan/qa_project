@@ -7,7 +7,9 @@
   <div id="answers_form" class="collapse">
     <%= form_for([question, Answer.new(question: question)], remote: true) do
       |f| %>
-      <td><%= f.text_area :content %></td>
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
       <br>
       <td><%= f.submit %></td>
     <% end %>

@@ -4,20 +4,11 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new commentable: @commentable
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
     @comment = Comment.create comment_params.merge(commentable_type: comment_params[:commentable_type].classify, user_id: current_user.id)
     @commentable = @comment.commentable
-  end
-
-  def edit
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
