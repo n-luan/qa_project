@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, :check_access_edit_update, only: [:edit, :update]
 
   def edit
     @profile = current_user.profile
@@ -28,5 +28,12 @@ class ProfilesController < ApplicationController
       redirect_to login_url
     end
   end
-  
+
+   def check_access_edit_update
+    @user = User.find(params[:id])
+    return if current_user? @user
+    flash[:danger] = "Access denied for user"
+    redirect_to root_path
+  end
+
 end

@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update, :show]
+  before_action :check_access_edit_update, only: [:edit, :update]
+
+  def index
+    @users = User.page(params[:page]).per(10)
+  end
 
   def new
     @user = User.new
@@ -50,14 +55,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def checkProfile
+  def check_access_edit_update
     @user = User.find(params[:id])
-    if @user.profile.present?
-      render :show
-    else
-      flash[:warning] = "Profile not found! Please create new profile"
-      redirect_to new_profile_url
-    end
+    return if current_user? @user
+    flash[:danger] = "Access denied for user"
+    redirect_to root_path
   end
 
 end
